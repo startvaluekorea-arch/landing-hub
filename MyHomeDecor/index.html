@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내집꾸밈 | 공간의 결을 단정하게 정돈하는 섬세한 맞춤 도배</title>
+  <meta name="description" content="원룸부터 아파트까지, 공간의 결을 단정하게 정돈하는 섬세한 맞춤 도배 전문 '내집꾸밈'. 꼼꼼한 기초작업과 친환경 자재로 안심할 수 있는 주거 공간을 완성합니다." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="내집꾸밈 | 맞춤 도배 인테리어" />
+  <meta property="og:description" content="원룸부터 아파트까지, 공간의 결을 단정하게 정돈하는 섬세한 맞춤 도배" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Google Fonts (Pretendard & Noto Serif KR for aesthetic warmth) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Meta Pixel Code (독립 삽입 규칙 준수: ID 112233445566778) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '112233445566778');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=112233445566778&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Complete Inline Isolation Style -->
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --bg-surface: #FFFFFF;
+      --text-dark: #2B2825;
+      --text-muted: #746E68;
+      --point-accent: #C28E5D; /* Warm Ochre/Earth Gold */
+      --point-accent-hover: #A77445;
+      --point-soft: #F2EAE1;
+      --border-subtle: #ECE6DE;
+      --shadow-sm: 0 4px 20px -2px rgba(43, 40, 37, 0.05);
+      --shadow-lg: 0 20px 40px -10px rgba(43, 40, 37, 0.08);
+      --font-serif: 'Noto Serif KR', serif;
+      --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.65;
+      word-break: keep-all;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--point-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-naver {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: #03C75A;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .btn-naver:hover {
+      opacity: 0.9;
+    }
+
+    .btn-header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: var(--text-dark);
+      color: #FAF8F5;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-header-cta:hover {
+      background: #45403B;
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 60px 0 90px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--point-soft);
+      color: var(--point-accent-hover);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero p.lead {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 28px;
+      border-radius: 14px;
+      background: var(--point-accent);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px -4px rgba(194, 142, 93, 0.4);
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--point-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -4px rgba(194, 142, 93, 0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 24px;
+      border-radius: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-dark);
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #F3ECE2;
+      border-color: #DFD5C7;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .stat-item .stat-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .stat-item .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-image-badge {
+      position: absolute;
+      bottom: -20px;
+      left: 28px;
+      background: white;
+      padding: 18px 22px;
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--point-soft);
+      color: var(--point-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 80px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 52px;
+    }
+    .section-header .section-tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--point-accent);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Features / Why Us Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #DFD5C7;
+    }
+    .feature-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--point-soft);
+      color: var(--point-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+    .feature-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Services Lineup */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .service-item {
+      background: var(--bg-surface);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--point-accent);
+      margin-bottom: 8px;
+    }
+    .service-item h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .service-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .service-tag-item {
+      background: #F5EFEB;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #685E54;
+      font-weight: 600;
+    }
+
+    /* Naver Place Banner */
+    .naver-banner {
+      background: linear-gradient(135deg, #03C75A 0%, #02a34a 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 44px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 40px;
+      box-shadow: 0 16px 32px -8px rgba(3, 199, 90, 0.35);
+    }
+    .naver-banner h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .naver-banner p {
+      font-size: 15px;
+      opacity: 0.92;
+    }
+    .naver-btn-white {
+      background: white;
+      color: #029443;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .naver-btn-white:hover {
+      background: #F4FAF6;
+      transform: translateY(-1px);
+    }
+
+    /* Process Section */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--point-soft);
+      color: var(--point-accent);
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Quote / Lead Form Section */
+    .quote-section {
+      background: #25221F;
+      color: white;
+      border-radius: 32px;
+      padding: 60px 48px;
+      margin: 40px auto;
+      box-shadow: var(--shadow-lg);
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .quote-text h2 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 18px;
+      color: #FAF8F5;
+    }
+    .quote-text p {
+      font-size: 15px;
+      color: #BDB6AD;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .quote-checkpoints {
+      list-style: none;
+      space-y: 12px;
+    }
+    .quote-checkpoints li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #E2DBD2;
+      margin-bottom: 10px;
+    }
+    .quote-checkpoints i {
+      color: var(--point-accent);
+    }
+
+    /* Form Container */
+    .lead-form-box {
+      background: #2F2A26;
+      border: 1px solid #433D37;
+      border-radius: 22px;
+      padding: 36px 32px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #D3CBC1;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      background: #1F1C1A;
+      border: 1px solid #484139;
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--point-accent);
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .btn-submit-lead {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--point-accent);
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+    .btn-submit-lead:hover {
+      background: var(--point-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 48px 0 36px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Success Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-box {
+      background: white;
+      border-radius: 24px;
+      padding: 36px 28px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .modal-icon {
+      width: 60px;
+      height: 60px;
+      background: #F4ECE3;
+      color: var(--point-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .modal-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--text-dark);
+      color: white;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+      .hero-image {
+        height: 340px;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+      .quote-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .quote-section {
+        padding: 40px 24px;
+      }
+      .naver-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <i data-lucide="home" style="width: 18px; height: 18px;"></i>
+          </div>
+          <span>내집꾸밈</span>
+        </a>
+
+        <div class="header-actions">
+          <!-- 네이버 플레이스 링크 연동 -->
+          <a href="https://m.place.naver.com/place/987654321" target="_blank" rel="noopener noreferrer" class="btn-naver">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
+            </svg>
+            <span>네이버 플레이스</span>
+          </a>
+
+          <a href="#quote" class="btn-header-cta">
+            <span>무료 실측 신청</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Text Column -->
+        <div>
+          <div class="badge-pill">
+            <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+            <span>섬세한 맞춤 도배 전문</span>
+          </div>
+
+          <h1>
+            원룸부터 아파트까지,<br>
+            공간의 결을 단정하게<br>
+            정돈하는 맞춤 도배
+          </h1>
+
+          <p class="lead">
+            벽지 하나로 집 안의 공기가 달라집니다.<br>
+            내집꾸밈은 들뜸 없는 철저한 기초 초배작업과 친환경 자재로 사계절 내내 단아하고 편안한 공간을 완성합니다.
+          </p>
+
+          <div class="hero-btns">
+            <!-- 전환 이벤트가 적용된 CTA 버튼 -->
+            <a href="#quote" class="btn-primary" onclick="handleConversion(event)">
+              <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+              <span>우리 집 맞춤 견적 확인하기</span>
+            </a>
+
+            <!-- 네이버 플레이스 확인 -->
+            <a href="https://m.place.naver.com/place/987654321" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <i data-lucide="map-pin" style="width: 16px; height: 16px; color: #03C75A;"></i>
+              <span>시공 후기 & 위치 안내</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">직영 반장 시공제</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">1년 무상</div>
+              <div class="stat-label">시공 하자보증 책임제</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">친환경</div>
+              <div class="stat-label">인증 친환경 풀 & 벽지</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80" alt="내집꾸밈 맞춤 도배 시공 포트폴리오" class="hero-image" />
+          <div class="hero-image-badge">
+            <div class="badge-icon">
+              <i data-lucide="check-check" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div>
+              <p style="font-size: 14px; font-weight: 800; color: #2B2825;">기초 퍼티 & 띄움 시공 원칙</p>
+              <p style="font-size: 12px; color: #746E68;">울퉁불퉁한 벽면도 칼선처럼 매끄럽게</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Choose Us</span>
+        <h2>도배, 겉면보다 기초가 기술입니다</h2>
+        <p>기존 벽지를 뜯어내지 않고 덧방만 하면 몇 달 못 가 울고 뜹니다. 내집꾸밈의 3대 시공 원칙을 확인하세요.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="layers" style="width: 26px; height: 26px;"></i>
+          </div>
+          <h3>철저한 기존 벽지 철거</h3>
+          <p>시간이 더 걸리더라도 곰팡이와 낡은 초배지까지 깔끔히 걷어내어 쾌적하고 냄새 없는 맑은 벽면을 준비합니다.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="shield" style="width: 26px; height: 26px;"></i>
+          </div>
+          <h3>친환경 인증 부자재</h3>
+          <p>포름알데히드 걱정 없는 환경표지인증 친환경 밀풀과 수성 바인더를 사용하여 아토피나 알레르기 걱정이 없습니다.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="award" style="width: 26px; height: 26px;"></i>
+          </div>
+          <h3>1년 무상 품질보증</h3>
+          <p>시공 후 이음새 벌어짐이나 모서리 들뜸 발생 시 1년 동안 무상으로 책임지고 AS를 약속드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Lineup Section -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Service Lineup</span>
+        <h2>주거 환경에 맞춘 최적의 도배 솔루션</h2>
+        <p>공간의 크기와 생활 스타일에 맞추어 합리적인 도배 시공을 제안합니다.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-item">
+          <div>
+            <div class="service-badge">SPACE 01</div>
+            <h3>원룸 & 오피스텔 단기 회전 도배</h3>
+            <p>세입자 교체기 또는 입주 전 가장 빠른 일정으로 깔끔한 화이트톤 룸 컨디션을 복원해 드립니다.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag-item">원룸/투룸</span>
+            <span class="service-tag-item">합지벽지</span>
+            <span class="service-tag-item">당일 시공</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div>
+            <div class="service-badge">SPACE 02</div>
+            <h3>아파트 프리미엄 실크 도배</h3>
+            <p>내구성과 오염 방지력이 뛰어난 고급 실크 벽지로 은은한 텍스처와 호텔 같은 단정함을 연출합니다.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag-item">20~50평형</span>
+            <span class="service-tag-item">실크도배</span>
+            <span class="service-tag-item">아이소핑크 단열</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div>
+            <div class="service-badge">SPACE 03</div>
+            <h3>포인트 벽면 & 부분 보수 도배</h3>
+            <p>누수, 결로, 반려동물 스크래치 등으로 상한 특정 벽면이나 천장만 자연스럽게 매칭 보수합니다.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag-item">거실 아트월</span>
+            <span class="service-tag-item">방 1개 시공</span>
+            <span class="service-tag-item">천장 부분보수</span>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div>
+            <div class="service-badge">SPACE 04</div>
+            <h3>올 리모델링 전체 풀패키지</h3>
+            <p>문틀 실리콘 마감부터 걸레받이 라인 정리까지 인테리어 완성도를 결정짓는 엣지 디테일을 완벽 시공합니다.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag-item">전체 리모델링</span>
+            <span class="service-tag-item">마이너스 몰딩</span>
+            <span class="service-tag-item">디테일 마감</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Naver Place Linked Banner -->
+      <div class="naver-banner">
+        <div>
+          <h3>네이버 플레이스에서 실제 시공 사진과 평점을 확인하세요</h3>
+          <p>수많은 고객님들이 직접 작성해주신 생생한 내돈내산 시공 후기가 준비되어 있습니다.</p>
+        </div>
+        <a href="https://m.place.naver.com/place/987654321" target="_blank" rel="noopener noreferrer" class="naver-btn-white" onclick="handleConversion(event)">
+          <span>네이버 플레이스 후기 보기</span>
+          <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Process</span>
+        <h2>간단하고 명확한 4단계 시공 절차</h2>
+        <p>복잡한 인테리어 공정도 단계별로 투명하게 안내해 드립니다.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h4>무료 상담 및 가견적</h4>
+          <p>평수와 공간 형태에 따른 투명한 견적 범위 즉시 안내</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h4>현장 실측 & 샘플북 선정</h4>
+          <p>전문 반장 방문으로 실측 및 실제 조명 아래 벽지 샘플 확인</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h4>철저한 기초 & 본도배</h4>
+          <p>기존 벽지 제거, 부직포 띄움 초배 및 장인 직영 정밀 도배</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h4>현장 정리 & 하자보증</h4>
+          <p>폐기물 말끔 수거, 고객 최종 검수 후 1년 무상 보증서 발급</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote & Lead Capture Section (AGENTS.md 표준 전환 이벤트 탑재) -->
+  <section id="quote" class="container">
+    <div class="quote-section">
+      <div class="quote-grid">
+        <div class="quote-text">
+          <span style="font-size: 13px; font-weight: 700; color: var(--point-accent); text-transform: uppercase;">Direct Consultation</span>
+          <h2>
+            우리 집의 새로운 분위기,<br>
+            지금 무료 실측부터<br>
+            시작해보세요
+          </h2>
+          <p>
+            공간의 구조와 면적에 따라 자재 소요량이 달라집니다.<br>
+            간단한 정보를 남겨주시면 도배 전문가가 10분 이내에 정확하고 거품 없는 맞춤 견적을 안내해 드립니다.
+          </p>
+
+          <ul class="quote-checkpoints">
+            <li>
+              <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+              <span>부담 없는 무료 방문 실측 및 벽지 샘플북 지참</span>
+            </li>
+            <li>
+              <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+              <span>추가 비용 없는 정찰제 시공 약속</span>
+            </li>
+            <li>
+              <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+              <span>원하는 날짜 우선 예약 가능</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lead Form -->
+        <div class="lead-form-box">
+          <form id="decorLeadForm" onsubmit="submitDecorLead(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="clientName">성함 / 연락처 성함 *</label>
+                <input type="text" id="clientName" required placeholder="예: 김민수" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="clientPhone">휴대폰 번호 *</label>
+                <input type="tel" id="clientPhone" required placeholder="예: 010-1234-5678" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="housingType">주거 형태 *</label>
+                <select id="housingType" required class="form-select">
+                  <option value="아파트">아파트</option>
+                  <option value="빌라 / 다세대">빌라 / 다세대</option>
+                  <option value="오피스텔 / 원룸">오피스텔 / 원룸</option>
+                  <option value="단독 / 상가주택">단독 / 상가주택</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pyeong">전용 평수 *</label>
+                <input type="text" id="pyeong" required placeholder="예: 24평 / 10평" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="location">시공 지역 (시/구/동)</label>
+              <input type="text" id="location" placeholder="예: 서울시 마포구 공덕동" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="wallpaperType">원하시는 도배 종류</label>
+              <select id="wallpaperType" class="form-select">
+                <option value="실크 도배 (추천)">실크 도배 (추천)</option>
+                <option value="합지 도배 (가성비)">합지 도배 (가성비)</option>
+                <option value="실크+합지 혼합">실크+합지 혼합</option>
+                <option value="상담 후 결정">상담 후 결정</option>
+              </select>
+            </div>
+
+            <!-- 전환 핸들러 onclick 삽입 -->
+            <button type="submit" class="btn-submit-lead" onclick="handleConversion(event)">
+              <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+              <span>무료 방문 실측 & 견적 신청하기</span>
+            </button>
+            <p style="font-size: 11px; color: #8F877E; text-align: center; margin-top: 10px;">
+              * 수집된 연락처는 도배 견적 상담 및 일정 조율 외 용도로 사용되지 않습니다.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="#">내집꾸밈 소개</a>
+          <a href="https://m.place.naver.com/place/987654321" target="_blank" rel="noopener noreferrer">네이버 플레이스</a>
+          <a href="#quote">견적 문의</a>
+        </div>
+        <p>
+          상호명: 내집꾸밈 | 대표: 최치훈 | 사업자등록번호: 234-88-01928<br>
+          시공 문의: 010-7261-1855 | 이메일: startbizkorea@gmail.com | 서울 및 수도권 전 지역 방문 시공<br>
+          Copyright &copy; 2026 내집꾸밈 (MyHomeDecor). All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Submission Modal -->
+  <div id="leadModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-icon">
+        <i data-lucide="check" style="width: 32px; height: 32px;"></i>
+      </div>
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">견적 신청이 완료되었습니다</h3>
+      <p style="font-size: 14px; color: #746E68; line-height: 1.6;">
+        내집꾸밈에 남겨주신 정보가 안전하게 전달되었습니다.<br>
+        전문 반장이 확인 후 10분 이내에 친절하게 상담 전화를 드리겠습니다.
+      </p>
+      <button class="modal-btn" onclick="closeModal()">확인</button>
+    </div>
+  </div>
+
+  <!-- Standard Tracking & Lead Conversion Script (AGENTS.md 준수) -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    // AGENTS.md 표준 전환 핸들러 패턴
+    function handleConversion(e) {
+      // 1. Meta Pixel 전환 추적 (Lead)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'MyHomeDecor_Quote_Lead',
+          currency: 'KRW',
+          status: 'submitted'
+        });
+      }
+
+      // 2. Google Analytics 4 전환 추적 (설정된 경우)
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'form',
+          event_label: 'MyHomeDecor'
+        });
+      }
+    }
+
+    // Lead Form Submit Handler
+    function submitDecorLead(e) {
+      e.preventDefault();
+      handleConversion(e);
+
+      const name = document.getElementById('clientName').value;
+      const phone = document.getElementById('clientPhone').value;
+      const housing = document.getElementById('housingType').value;
+      const pyeong = document.getElementById('pyeong').value;
+      const location = document.getElementById('location').value;
+      const wallpaper = document.getElementById('wallpaperType').value;
+
+      // 이메일 비동기 알림 (startbizkorea@gmail.com)
+      fetch("https://formsubmit.co/ajax/startbizkorea@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          "업체명": "내집꾸밈 (MyHomeDecor)",
+          "고객성함": name,
+          "연락처": phone,
+          "주거형태": housing,
+          "평수": pyeong,
+          "지역": location || "미기재",
+          "선택도배종류": wallpaper,
+          "_subject": `[내집꾸밈 견적신청] ${name}님 (${housing} ${pyeong}) - ${phone}`,
+          "_template": "table",
+          "_captcha": "false"
+        })
+      }).catch(function(err) {
+        console.warn("Notice sent:", err);
+      });
+
+      // Show Modal
+      document.getElementById('leadModal').style.display = 'flex';
+      document.getElementById('decorLeadForm').reset();
+    }
+
+    function closeModal() {
+      document.getElementById('leadModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
