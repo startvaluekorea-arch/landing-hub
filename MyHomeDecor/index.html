@@ -673,6 +673,203 @@
       margin-top: 20px;
     }
 
+    /* Carousel Gallery Styles */
+    .carousel-container {
+      position: relative;
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-subtle);
+    }
+    .carousel-main-viewport {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      background: #1F1C1A;
+      overflow: hidden;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      transform: scale(1.02);
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      z-index: 1;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(20, 18, 16, 0.92) 0%, rgba(20, 18, 16, 0.5) 60%, transparent 100%);
+      padding: 36px 32px 24px;
+      color: white;
+      z-index: 2;
+    }
+    .carousel-category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--point-accent);
+      color: white;
+      margin-bottom: 8px;
+    }
+    .carousel-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #FAF8F5;
+    }
+    .carousel-desc {
+      font-size: 14px;
+      color: #D3CBC1;
+      max-width: 680px;
+      line-height: 1.5;
+    }
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s;
+    }
+    .carousel-nav-btn:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.08);
+      color: var(--point-accent);
+    }
+    .carousel-prev {
+      left: 20px;
+    }
+    .carousel-next {
+      right: 20px;
+    }
+    .carousel-counter {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      z-index: 10;
+      letter-spacing: 0.05em;
+    }
+    .carousel-thumbs-wrap {
+      padding: 16px 20px;
+      background: #FAF8F5;
+      border-top: 1px solid var(--border-subtle);
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .carousel-thumbs-list {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .carousel-thumb-item {
+      flex: 0 0 84px;
+      height: 56px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.5;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .carousel-thumb-item.active {
+      opacity: 1;
+      border-color: var(--point-accent);
+      transform: scale(1.04);
+      box-shadow: 0 2px 10px rgba(194, 142, 93, 0.35);
+    }
+    .carousel-thumb-item:hover {
+      opacity: 0.85;
+    }
+    .carousel-thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Hero Mini Carousel */
+    .hero-carousel-box {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-dots {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hero-dot.active {
+      background: var(--point-accent);
+      width: 22px;
+      border-radius: 999px;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .hero-grid {
@@ -682,8 +879,17 @@
       .hero h1 {
         font-size: 32px;
       }
-      .hero-image {
+      .hero-carousel-box {
         height: 340px;
+      }
+      .carousel-main-viewport {
+        height: 380px;
+      }
+      .carousel-title {
+        font-size: 18px;
+      }
+      .carousel-desc {
+        font-size: 13px;
       }
       .features-grid {
         grid-template-columns: 1fr;
@@ -720,6 +926,17 @@
           </div>
           <span>내집꾸밈</span>
         </a>
+
+        <!-- Navigation Links -->
+        <nav style="display: flex; gap: 24px; font-size: 14px; font-weight: 700;" class="header-nav">
+          <a href="#gallery" style="color: var(--point-accent); display: flex; align-items: center; gap: 4px;">
+            <i data-lucide="images" style="width: 15px; height: 15px;"></i>
+            <span>시공 갤러리(10선)</span>
+          </a>
+          <a href="#features" style="color: var(--text-dark);">시공 원칙</a>
+          <a href="#services" style="color: var(--text-dark);">서비스 안내</a>
+          <a href="#process" style="color: var(--text-dark);">진행 절차</a>
+        </nav>
 
         <div class="header-actions">
           <!-- 네이버 플레이스 링크 연동 -->
@@ -790,16 +1007,205 @@
           </div>
         </div>
 
-        <!-- Image Column -->
+        <!-- Image Column with Interactive Carousel -->
         <div class="hero-image-wrap">
-          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80" alt="내집꾸밈 맞춤 도배 시공 포트폴리오" class="hero-image" />
+          <div class="hero-carousel-box" id="heroMiniCarousel">
+            <div class="hero-slide active"><img src="./img/craftsman_work.jpg" alt="도배 장인 정밀 시공" /></div>
+            <div class="hero-slide"><img src="./img/undercoat_prep.jpg" alt="기초 초배 밑작업" /></div>
+            <div class="hero-slide"><img src="./img/sample_consultation.jpg" alt="벽지 샘플북 상담" /></div>
+            <div class="hero-slide"><img src="./img/bedroom_wallpaper.jpg" alt="호텔식 침실 도배" /></div>
+            <div class="hero-slide"><img src="./img/studio_wallpaper.jpg" alt="원룸 오피스텔 도배" /></div>
+            <div class="hero-slide"><img src="./img/living_room_01.jpg" alt="모던 거실 도배 01" /></div>
+            <div class="hero-slide"><img src="./img/living_room_02.jpg" alt="모던 거실 도배 02" /></div>
+            <div class="hero-slide"><img src="./img/living_room_03.jpg" alt="모던 거실 도배 03" /></div>
+            <div class="hero-slide"><img src="./img/living_room_04.jpg" alt="모던 거실 도배 04" /></div>
+            <div class="hero-slide"><img src="./img/wallpaper_tools.jpg" alt="친환경 도배 전문가 공구" /></div>
+
+            <!-- Mini Dots -->
+            <div class="hero-dots" id="heroDots">
+              <span class="hero-dot active" onclick="gotoHeroSlide(0)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(1)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(2)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(3)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(4)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(5)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(6)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(7)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(8)"></span>
+              <span class="hero-dot" onclick="gotoHeroSlide(9)"></span>
+            </div>
+          </div>
           <div class="hero-image-badge">
             <div class="badge-icon">
               <i data-lucide="check-check" style="width: 24px; height: 24px;"></i>
             </div>
             <div>
-              <p style="font-size: 14px; font-weight: 800; color: #2B2825;">기초 퍼티 & 띄움 시공 원칙</p>
-              <p style="font-size: 12px; color: #746E68;">울퉁불퉁한 벽면도 칼선처럼 매끄럽게</p>
+              <p style="font-size: 14px; font-weight: 800; color: #2B2825;" id="heroBadgeTitle">도배 장인 정밀 시공 원칙</p>
+              <p style="font-size: 12px; color: #746E68;" id="heroBadgeDesc">들뜸 없는 기초 초배와 섬세한 칼선 마감</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10-Photo Main Gallery Carousel Section -->
+  <section id="gallery" style="background: #F5EFEB; padding: 84px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portfolio & Craftsmanship</span>
+        <h2>10가지 도배 시공 스토리</h2>
+        <p>사다리 위 정밀 도배부터 꼼꼼한 기초 밑작업, 거실·침실·원룸 완공 모습까지 10장의 사진을 넘겨보며 확인하세요.</p>
+      </div>
+
+      <!-- Carousel Frame -->
+      <div class="carousel-container" id="mainCarousel">
+        <!-- Main Viewport -->
+        <div class="carousel-main-viewport">
+          <!-- Counter Badge -->
+          <div class="carousel-counter" id="carouselCounter">01 / 10</div>
+
+          <!-- Slide 01: 도배 장인 시공 -->
+          <div class="carousel-slide active" data-index="0">
+            <img src="./img/craftsman_work.jpg" alt="도배 장인의 손끝에서 완성되는 정밀 도배" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">시공 현장</span>
+              <h3 class="carousel-title">1. 장인의 손끝에서 완성되는 정밀 도배</h3>
+              <p class="carousel-desc">사다리 위에서 헤라와 롤러로 벽면 이음새를 티 없이 마감하는 100% 직영 반장의 정밀 시공 현장입니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 02: 기초 초배 밑작업 -->
+          <div class="carousel-slide" data-index="1">
+            <img src="./img/undercoat_prep.jpg" alt="들뜸 없는 기초 띄움 초배 & 퍼티 작업" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">기초 공정</span>
+              <h3 class="carousel-title">2. 들뜸 없는 기초 띄움 초배 & 퍼티 작업</h3>
+              <p class="carousel-desc">기존 낡은 벽지를 전면 철거하고 부직포 초배 및 퍼티로 매끈한 바탕면을 구축하여 하자를 사전 차단합니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 03: 샘플북 상담 -->
+          <div class="carousel-slide" data-index="2">
+            <img src="./img/sample_consultation.jpg" alt="1:1 현장 방문 프리미엄 샘플북 상담" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">맞춤 상담</span>
+              <h3 class="carousel-title">3. 1:1 현장 방문 프리미엄 샘플북 상담</h3>
+              <p class="carousel-desc">실제 조명 아래에서 친환경 실크/합지 벽지의 컬러와 질감을 직접 비교하고 우리 집에 가장 어울리는 톤을 선정합니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 04: 침실 실크도배 -->
+          <div class="carousel-slide" data-index="3">
+            <img src="./img/bedroom_wallpaper.jpg" alt="호텔 스위트룸 감성의 마스터 침실 도배" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">침실 인테리어</span>
+              <h3 class="carousel-title">4. 호텔 스위트룸 감성의 마스터 침실 도배</h3>
+              <p class="carousel-desc">은은한 간접 조명과 조화를 이루는 따뜻한 웜그레이 톤 실크벽지로 아늑하고 편안한 힐링 휴식 공간을 완성했습니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 05: 원룸 화이트 도배 -->
+          <div class="carousel-slide" data-index="4">
+            <img src="./img/studio_wallpaper.jpg" alt="원룸 & 오피스텔 화이트톤 단기 회전 도배" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">원룸 & 오피스텔</span>
+              <h3 class="carousel-title">5. 원룸 & 오피스텔 화이트톤 단기 회전 도배</h3>
+              <p class="carousel-desc">새집처럼 화사하고 쾌적하게 공간이 1.5배 넓어 보이는 깔끔한 화이트 시공으로 입주 전 최상의 컨디션을 만듭니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 06: 거실 01 -->
+          <div class="carousel-slide" data-index="5">
+            <img src="./img/living_room_01.jpg" alt="채광과 어우러지는 내추럴 베이지 거실" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">거실 인테리어</span>
+              <h3 class="carousel-title">6. 채광과 어우러지는 내추럴 베이지 거실</h3>
+              <p class="carousel-desc">통창을 통해 쏟아지는 부드러운 자연광과 완벽하게 매칭되는 무광 베이지 벽면이 아늑한 가족 공간을 연출합니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 07: 거실 02 -->
+          <div class="carousel-slide" data-index="6">
+            <img src="./img/living_room_02.jpg" alt="따스한 오후 햇살이 머무는 패밀리 리빙룸" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">거실 인테리어</span>
+              <h3 class="carousel-title">7. 따스한 오후 햇살이 머무는 패밀리 리빙룸</h3>
+              <p class="carousel-desc">원목 가구와 빌트인 수납장에 단정하게 어울리는 온화한 오트밀 텍스처 벽지로 품격을 한 단계 높였습니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 08: 거실 03 -->
+          <div class="carousel-slide" data-index="7">
+            <img src="./img/living_room_03.jpg" alt="감각적인 곡선과 갤러리 무드의 거실" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">거실 인테리어</span>
+              <h3 class="carousel-title">8. 감각적인 곡선과 갤러리 무드의 거실</h3>
+              <p class="carousel-desc">액자 아트월과 라운드 소파를 돋보이게 해주는 세련된 그레이지 실크 벽지로 갤러리 같은 감성을 담았습니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 09: 거실 04 -->
+          <div class="carousel-slide" data-index="8">
+            <img src="./img/living_room_04.jpg" alt="높은 층고를 자랑하는 하이엔드 오픈 플랜" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">거실 인테리어</span>
+              <h3 class="carousel-title">9. 높은 층고를 자랑하는 하이엔드 오픈 플랜</h3>
+              <p class="carousel-desc">시원한 도심 뷰와 높은 벽면도 이음새 결점 없이 매끄럽게 완성한 프리미엄 아파트 맞춤 도배입니다.</p>
+            </div>
+          </div>
+
+          <!-- Slide 10: 도배 도구 정물 -->
+          <div class="carousel-slide" data-index="9">
+            <img src="./img/wallpaper_tools.jpg" alt="정직하고 안전한 친환경 부자재 & 전문가 도구" />
+            <div class="carousel-overlay">
+              <span class="carousel-category">친환경 부자재</span>
+              <h3 class="carousel-title">10. 정직하고 안전한 친환경 부자재 & 전문가 도구</h3>
+              <p class="carousel-desc">유해물질 없는 친환경 인증 밀풀과 독일제 정밀 공구로 시공 냄새 ZERO 및 안전한 주거 환경을 약속합니다.</p>
+            </div>
+          </div>
+
+          <!-- Navigation Arrow Buttons -->
+          <button class="carousel-nav-btn carousel-prev" onclick="prevSlide()" aria-label="이전 사진">
+            <i data-lucide="chevron-left" style="width: 24px; height: 24px;"></i>
+          </button>
+          <button class="carousel-nav-btn carousel-next" onclick="nextSlide()" aria-label="다음 사진">
+            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+          </button>
+        </div>
+
+        <!-- Thumbnail Strip Bar -->
+        <div class="carousel-thumbs-wrap">
+          <div class="carousel-thumbs-list" id="carouselThumbs">
+            <div class="carousel-thumb-item active" onclick="gotoSlide(0)" title="1. 도배 장인 시공">
+              <img src="./img/craftsman_work.jpg" alt="썸네일 1" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(1)" title="2. 기초 초배 밑작업">
+              <img src="./img/undercoat_prep.jpg" alt="썸네일 2" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(2)" title="3. 샘플북 상담">
+              <img src="./img/sample_consultation.jpg" alt="썸네일 3" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(3)" title="4. 침실 실크도배">
+              <img src="./img/bedroom_wallpaper.jpg" alt="썸네일 4" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(4)" title="5. 원룸 오피스텔">
+              <img src="./img/studio_wallpaper.jpg" alt="썸네일 5" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(5)" title="6. 거실 01">
+              <img src="./img/living_room_01.jpg" alt="썸네일 6" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(6)" title="7. 거실 02">
+              <img src="./img/living_room_02.jpg" alt="썸네일 7" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(7)" title="8. 거실 03">
+              <img src="./img/living_room_03.jpg" alt="썸네일 8" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(8)" title="9. 거실 04">
+              <img src="./img/living_room_04.jpg" alt="썸네일 9" />
+            </div>
+            <div class="carousel-thumb-item" onclick="gotoSlide(9)" title="10. 전문가 도구">
+              <img src="./img/wallpaper_tools.jpg" alt="썸네일 10" />
             </div>
           </div>
         </div>
@@ -1082,14 +1488,157 @@
     </div>
   </div>
 
-  <!-- Standard Tracking & Lead Conversion Script (AGENTS.md 준수) -->
+  <!-- Standard Tracking & Lead Conversion Script (AGENTS.md 준수) & Carousel Logic -->
   <script>
     // Initialize Lucide Icons
     document.addEventListener("DOMContentLoaded", function() {
       if (window.lucide) {
         window.lucide.createIcons();
       }
+      initCarousels();
     });
+
+    // ==========================================
+    // 10-Photo Main Gallery Carousel Controller
+    // ==========================================
+    let currentSlide = 0;
+    const totalSlides = 10;
+    let autoPlayTimer = null;
+
+    function updateCarouselUI(index) {
+      const slides = document.querySelectorAll('#mainCarousel .carousel-slide');
+      const thumbs = document.querySelectorAll('#carouselThumbs .carousel-thumb-item');
+      const counter = document.getElementById('carouselCounter');
+
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      thumbs.forEach((thumb, idx) => {
+        if (idx === index) {
+          thumb.classList.add('active');
+          // 썸네일 스크롤을 중앙으로 정렬
+          thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+
+      if (counter) {
+        const formatted = String(index + 1).padStart(2, '0');
+        counter.textContent = `${formatted} / 10`;
+      }
+    }
+
+    function gotoSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      updateCarouselUI(currentSlide);
+      resetAutoPlay();
+    }
+
+    function nextSlide() {
+      gotoSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      gotoSlide(currentSlide - 1);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        nextSlide();
+      }, 4500);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    function resetAutoPlay() {
+      startAutoPlay();
+    }
+
+    // ==========================================
+    // Hero Mini Carousel Controller
+    // ==========================================
+    let heroCurrentSlide = 0;
+    const heroTotal = 10;
+    let heroTimer = null;
+
+    const heroBadges = [
+      { title: "도배 장인 정밀 시공 원칙", desc: "들뜸 없는 기초 초배와 섬세한 칼선 마감" },
+      { title: "기초 퍼티 & 띄움 시공 원칙", desc: "울퉁불퉁한 벽면도 칼선처럼 매끄럽게" },
+      { title: "1:1 방문 프리미엄 샘플북 상담", desc: "실제 조명 아래에서 직접 질감 확인" },
+      { title: "호텔 스위트룸 감성 침실", desc: "은은한 간접조명과 웜그레이 실크벽지" },
+      { title: "원룸 & 오피스텔 단기 회전 도배", desc: "화사하고 쾌적하게 1.5배 넓어 보이는 공간" },
+      { title: "채광과 어우러지는 내추럴 베이지", desc: "자연광과 매칭되는 고급 무광 베이지 벽면" },
+      { title: "따스한 오후 햇살의 리빙룸", desc: "원목 가구에 단정하게 어울리는 온화한 톤" },
+      { title: "감각적인 곡선과 갤러리 무드", desc: "아트월과 소파를 돋보이게 하는 실크벽지" },
+      { title: "높은 층고의 하이엔드 오픈 플랜", desc: "결점 없이 매끄러운 프리미엄 맞춤 시공" },
+      { title: "친환경 인증 부자재 ZERO 냄새", desc: "유해물질 없는 친환경 밀풀과 정밀 공구" }
+    ];
+
+    function gotoHeroSlide(index) {
+      heroCurrentSlide = (index + heroTotal) % heroTotal;
+      const heroSlides = document.querySelectorAll('#heroMiniCarousel .hero-slide');
+      const heroDots = document.querySelectorAll('#heroDots .hero-dot');
+      const badgeTitle = document.getElementById('heroBadgeTitle');
+      const badgeDesc = document.getElementById('heroBadgeDesc');
+
+      heroSlides.forEach((s, i) => {
+        if (i === heroCurrentSlide) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+
+      heroDots.forEach((d, i) => {
+        if (i === heroCurrentSlide) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+
+      if (badgeTitle && heroBadges[heroCurrentSlide]) {
+        badgeTitle.textContent = heroBadges[heroCurrentSlide].title;
+      }
+      if (badgeDesc && heroBadges[heroCurrentSlide]) {
+        badgeDesc.textContent = heroBadges[heroCurrentSlide].desc;
+      }
+    }
+
+    function initCarousels() {
+      // Main Carousel Hover Pause
+      const mainCarouselEl = document.getElementById('mainCarousel');
+      if (mainCarouselEl) {
+        mainCarouselEl.addEventListener('mouseenter', stopAutoPlay);
+        mainCarouselEl.addEventListener('mouseleave', startAutoPlay);
+
+        // Touch Swipe
+        let startX = 0;
+        mainCarouselEl.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        mainCarouselEl.addEventListener('touchend', (e) => {
+          const endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          if (diff > 40) nextSlide();
+          else if (diff < -40) prevSlide();
+        }, { passive: true });
+      }
+
+      startAutoPlay();
+
+      // Hero Carousel Auto Play (3.5s)
+      heroTimer = setInterval(() => {
+        gotoHeroSlide(heroCurrentSlide + 1);
+      }, 3500);
+    }
 
     // AGENTS.md 표준 전환 핸들러 패턴
     function handleConversion(e) {
