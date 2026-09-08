@@ -1,152 +1,935 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Hub | Multi-Client Landing Infrastructure</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>비즈하이브 (BizHive) | 골목 상권 매출 성장의 베이스캠프</title>
+  <meta name="description" content="사장님은 매장에만 집중하세요. 손님이 모여드는 일은 비즈하이브가 합니다. 소상공인 맞춤 동네 타깃 마케팅 및 스마트플레이스 최적화 솔루션." />
+  
+  <!-- Pretendard WebFont -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0F172A',      // Deep Slate Navy
+              surface: '#1E293B',
+              border: '#334155',
+              amber: '#F59E0B',     // Warm Honey Amber
+              amberDark: '#D97706',
+              amberLight: '#FEF3C7',
+              grayBg: '#F8FAFC',
+            }
+          },
+          boxShadow: {
+            'glow-amber': '0 0 25px -5px rgba(245, 158, 11, 0.3)',
+            'card-soft': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    :root {
-      --bg-gradient: radial-gradient(circle at 50% 0%, #1a1f36 0%, #0a0c16 100%);
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --accent-primary: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.35);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --status-active: #10b981;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg-gradient);
-      background-color: #0a0c16;
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 580px;
-      width: 100%;
-      text-align: center;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 48px 36px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
-      position: relative;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--status-active);
-      margin-bottom: 24px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--status-active);
-      box-shadow: 0 0 10px var(--status-active);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.9); }
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    p.subtitle {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 32px;
       word-break: keep-all;
     }
-
-    .info-card {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px dashed rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 18px 20px;
-      font-size: 13px;
-      color: #cbd5e1;
-      text-align: left;
-      line-height: 1.6;
-      margin-bottom: 28px;
+    .hexagon-badge {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     }
-
-    .info-card code {
-      background: rgba(99, 102, 241, 0.15);
-      color: #a5b4fc;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-family: monospace;
+    .custom-gradient-hero {
+      background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
     }
-
-    .footer-note {
-      font-size: 12px;
-      color: #64748b;
+    .custom-mesh-pattern {
+      background-image: radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="status-badge">
-      <span class="status-dot"></span>
-      인프라 정상 운영 중
-    </div>
-    <h1>Landing Hub</h1>
-    <p class="subtitle">
-      하위 경로 기반 독립형 다중 랜딩페이지 통합 허브입니다.<br>
-      지정된 캠페인 또는 업체별 고유 하위 경로(URL)를 통해 접근해 주세요.
-    </p>
+<body class="bg-brand-grayBg text-slate-800 antialiased selection:bg-brand-amber selection:text-white">
 
-    <div class="info-card">
-      ℹ️ <strong>접근 가이드 안내</strong><br>
-      • 각 랜딩페이지는 <code>/{client_name}/</code> 형식의 하위 경로로 독립 배포됩니다.<br>
-      • 루트 경로는 허브 보안 및 404 방어용으로 유지됩니다.
+  <!-- 1. Header / Navigation -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-amber to-brand-amberDark flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform duration-200">
+          <svg class="w-6 h-6 text-brand-navy fill-current" viewBox="0 0 24 24">
+            <!-- Honeycomb Hexagon Symbol -->
+            <path d="M12 2L21 7.2V16.8L12 22L3 16.8V7.2L12 2Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M12 6.5L17 9.4V15.2L12 18.1L7 15.2V9.4L12 6.5Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-black tracking-tight text-brand-navy leading-none">BizHive</span>
+          <span class="text-xs font-semibold text-brand-amberDark tracking-widest mt-0.5">비즈하이브</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-sm font-semibold text-slate-600 hover:text-brand-amberDark transition-colors">서비스 안내</a>
+        <a href="#why-bizhive" class="text-sm font-semibold text-slate-600 hover:text-brand-amberDark transition-colors">차별점</a>
+        <a href="#process" class="text-sm font-semibold text-slate-600 hover:text-brand-amberDark transition-colors">진행 절차</a>
+        <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-brand-amberDark transition-colors">자주 묻는 질문</a>
+      </nav>
+
+      <!-- Header CTA -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#consultation" class="inline-flex items-center gap-2 bg-brand-navy hover:bg-slate-800 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 border border-slate-700">
+          <i data-lucide="sparkles" class="w-4 h-4 text-brand-amber"></i>
+          <span>무료 매장 진단 신청</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-brand-navy hover:bg-slate-100 transition-colors" aria-label="메뉴 열기">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </div>
 
-    <div class="footer-note">
-      Multi-Landing Infrastructure &copy; 2025 All Rights Reserved.
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
+      <a href="#services" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-amberDark" onclick="toggleMobileMenu()">서비스 안내</a>
+      <a href="#why-bizhive" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-amberDark" onclick="toggleMobileMenu()">차별점</a>
+      <a href="#process" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-amberDark" onclick="toggleMobileMenu()">진행 절차</a>
+      <a href="#faq" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-amberDark" onclick="toggleMobileMenu()">자주 묻는 질문</a>
+      <div class="pt-2">
+        <a href="#consultation" class="block text-center w-full bg-brand-navy text-white text-sm font-bold py-3 rounded-xl shadow-md" onclick="toggleMobileMenu()">
+          무료 매장 진단 신청하기
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Hero Section -->
+  <section class="relative custom-gradient-hero text-white pt-20 pb-28 md:pt-28 md:pb-36 overflow-hidden">
+    <!-- Background Accents -->
+    <div class="absolute inset-0 custom-mesh-pattern pointer-events-none"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-amber/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-amber/15 border border-brand-amber/30 text-brand-amber text-xs sm:text-sm font-bold mb-8 shadow-inner animate-pulse">
+        <i data-lucide="award" class="w-4 h-4"></i>
+        <span>골목 상권 매출 성장의 베이스캠프</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight sm:leading-tight mb-6">
+        사장님은 매장에만 집중하세요.<br class="hidden sm:block">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-brand-amber to-amber-400">
+          손님이 모여드는 일은 비즈하이브가 합니다.
+        </span>
+      </h1>
+
+      <!-- Sub Heading -->
+      <p class="max-w-2xl mx-auto text-base sm:text-xl text-slate-300 font-normal leading-relaxed mb-10">
+        비싼 광고비, 불투명한 성과에 지치셨나요?<br class="hidden sm:block">
+        동네 반경 타깃 광고부터 스마트플레이스 최적화까지,<br class="hidden sm:block">
+        <strong class="text-white font-semibold">실제 방문 손님으로 이어지는 데이터 기반 로컬 마케팅</strong>을 제안합니다.
+      </p>
+
+      <!-- Hero CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#consultation" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-brand-amber to-brand-amberDark hover:from-amber-400 hover:to-brand-amber text-brand-navy font-black text-base sm:text-lg px-8 py-4 rounded-2xl shadow-glow-amber hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-200">
+          <i data-lucide="file-search" class="w-5 h-5 text-brand-navy"></i>
+          <span>우리 매장 온라인 진단 무료 신청하기</span>
+        </a>
+        <a href="#process" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-700/90 text-white font-semibold text-base px-7 py-4 rounded-2xl border border-slate-700 transition-all duration-200">
+          <span>서비스 도입 프로세스 보기</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </div>
+
+      <!-- Social Proof / Metrics Pill Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto pt-6 border-t border-slate-800">
+        <div class="flex items-center justify-center sm:justify-start gap-3 bg-slate-900/60 backdrop-blur-sm border border-slate-800/80 rounded-xl p-3.5">
+          <div class="w-9 h-9 rounded-lg bg-brand-amber/20 flex items-center justify-center shrink-0">
+            <i data-lucide="user-check" class="w-5 h-5 text-brand-amber"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-slate-400 font-medium">책임 전담제</p>
+            <p class="text-sm font-bold text-white">1:1 전담 마케터 밀착 배정</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center sm:justify-start gap-3 bg-slate-900/60 backdrop-blur-sm border border-slate-800/80 rounded-xl p-3.5">
+          <div class="w-9 h-9 rounded-lg bg-brand-amber/20 flex items-center justify-center shrink-0">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-amber"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-slate-400 font-medium">성과 투명성</p>
+            <p class="text-sm font-bold text-white">주간 투명 리포트 제공</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center sm:justify-start gap-3 bg-slate-900/60 backdrop-blur-sm border border-slate-800/80 rounded-xl p-3.5">
+          <div class="w-9 h-9 rounded-lg bg-brand-amber/20 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5 text-brand-amber"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs text-slate-400 font-medium">안심 파트너십</p>
+            <p class="text-sm font-bold text-white">불필요한 장기 계약 강요 없음</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Problem Section (공감 및 문제 제기) -->
+  <section class="py-20 md:py-28 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 bg-red-50 border border-red-200 px-3.5 py-1 rounded-full mb-3">
+          <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+          <span>사장님들의 실제 고민</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          "매장 운영만으로도 벅찬데,<br class="sm:hidden"> 마케팅 때문에 답답하셨죠?"
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-600">
+          수많은 골목상권 사장님들이 대행사에 배신당하고 공통적으로 호소하시는 3대 문제입니다.
+        </p>
+      </div>
+
+      <!-- Problem 3 Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="relative bg-slate-50 border border-slate-200/90 rounded-2xl p-8 hover:border-slate-300 hover:shadow-lg transition-all duration-300 flex flex-col">
+          <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+            <i data-lucide="banknote" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold text-red-600 tracking-wider uppercase mb-2">Pain Point 01</span>
+          <h3 class="text-xl font-bold text-brand-navy mb-3 leading-snug">
+            "매달 광고비는 나가는데, 손님이 늘었는지 모르겠어요."
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
+            노출 수만 올라갔다는 통계 보고서만 올 뿐, 실제 매장 문을 열고 들어오는 손님으로 연결되는지 분석조차 불가능한 깜깜이 집행에 지치셨습니다.
+          </p>
+          <div class="pt-4 border-t border-slate-200/80 text-xs font-medium text-slate-500 flex items-center gap-1.5">
+            <i data-lucide="x-circle" class="w-4 h-4 text-red-500"></i>
+            <span>효과 분석 없는 단순 노출 반복</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="relative bg-slate-50 border border-slate-200/90 rounded-2xl p-8 hover:border-slate-300 hover:shadow-lg transition-all duration-300 flex flex-col">
+          <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+            <i data-lucide="phone-off" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold text-red-600 tracking-wider uppercase mb-2">Pain Point 02</span>
+          <h3 class="text-xl font-bold text-brand-navy mb-3 leading-snug">
+            "대행사 전화 받고 계약했더니 연락이 두절됐어요."
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
+            연간 수백만 원 장기 결제를 유도한 뒤 매니저는 퇴사하고 문의 전화조차 받지 않는 불성실한 대행 관행으로 깊은 상처를 입으셨습니다.
+          </p>
+          <div class="pt-4 border-t border-slate-200/80 text-xs font-medium text-slate-500 flex items-center gap-1.5">
+            <i data-lucide="x-circle" class="w-4 h-4 text-red-500"></i>
+            <span>계약 체결에만 급급한 불성실 관리</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="relative bg-slate-50 border border-slate-200/90 rounded-2xl p-8 hover:border-slate-300 hover:shadow-lg transition-all duration-300 flex flex-col">
+          <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+            <i data-lucide="clock-alert" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold text-red-600 tracking-wider uppercase mb-2">Pain Point 03</span>
+          <h3 class="text-xl font-bold text-brand-navy mb-3 leading-snug">
+            "인스타, 플레이스, 블로그... 혼자 하기엔 너무 복잡해요."
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
+            재료 준비, 조리, 고객 응대, 직원 관리만으로도 24시간이 모자란데 빠르게 바뀌는 온라인 마케팅 트렌드를 직접 따라가기란 불가능에 가깝습니다.
+          </p>
+          <div class="pt-4 border-t border-slate-200/80 text-xs font-medium text-slate-500 flex items-center gap-1.5">
+            <i data-lucide="x-circle" class="w-4 h-4 text-red-500"></i>
+            <span>매장 운영과 마케팅 병행의 한계</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Solution & Services (비즈하이브의 3단계 솔루션) -->
+  <section id="services" class="py-20 md:py-28 bg-brand-grayBg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-amberDark bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full mb-3">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-brand-amber"></i>
+          <span>BizHive 3-Step Solution</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          비즈하이브는 매장에 '진짜 손님'을 채웁니다
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-600">
+          허수 클릭이 아닌, 매장 문턱을 넘는 방문 전환 중심의 3단계 맞춤 전략
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Service 01 -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-card-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-amber-50 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+          <span class="text-3xl font-black text-brand-amber/40 mb-4 block">01</span>
+          
+          <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-amber flex items-center justify-center mb-6 shadow-md shadow-slate-900/10">
+            <i data-lucide="map-pin" class="w-7 h-7"></i>
+          </div>
+
+          <h3 class="text-xl font-bold text-brand-navy mb-3">
+            스마트플레이스 최적화
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+            내 매장을 찾을 확률이 가장 높은 동네 키워드를 정밀 선별하여 지도 상위 랭킹과 클릭률을 획기적으로 끌어올립니다.
+          </p>
+
+          <ul class="space-y-2.5 text-sm text-slate-700 pt-4 border-t border-slate-100">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>우리 동네 키워드 검색 시 상위 노출 최적화</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>대표 사진, 메뉴 구성, 스토리텔링 리뉴얼</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>네이버 예약 및 길찾기 유입률 극대화</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Service 02 -->
+        <div class="bg-white rounded-3xl p-8 border border-brand-amber/40 shadow-card-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden group ring-2 ring-brand-amber/20">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-amber-100/60 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+          <span class="text-3xl font-black text-brand-amber mb-4 block">02</span>
+
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-amber to-brand-amberDark text-brand-navy flex items-center justify-center mb-6 shadow-md shadow-amber-500/20">
+            <i data-lucide="target" class="w-7 h-7"></i>
+          </div>
+
+          <h3 class="text-xl font-bold text-brand-navy mb-3">
+            초정밀 로컬 타깃 SNS 광고
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+            매장으로 걸어올 수 있는 3~5km 반경 내 실제 거주자와 직장인에게만 핀포인트로 광고를 노출하여 광고비 누수를 100% 차단합니다.
+          </p>
+
+          <ul class="space-y-2.5 text-sm text-slate-700 pt-4 border-t border-slate-100">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amberDark shrink-0 mt-0.5"></i>
+              <span>매장 반경 3~5km 핵심 거주/직장 인구 타깃팅</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amberDark shrink-0 mt-0.5"></i>
+              <span>인스타그램·메타 머신러닝 기반 피드/릴스 광고</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amberDark shrink-0 mt-0.5"></i>
+              <span>당일 즉시 반응을 이끄는 예약 및 쿠폰 배포 연동</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Service 03 -->
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-card-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-amber-50 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
+          <span class="text-3xl font-black text-brand-amber/40 mb-4 block">03</span>
+
+          <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-amber flex items-center justify-center mb-6 shadow-md shadow-slate-900/10">
+            <i data-lucide="repeat" class="w-7 h-7"></i>
+          </div>
+
+          <h3 class="text-xl font-bold text-brand-navy mb-3">
+            재방문 & 단골 락인(Lock-in) 시스템
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+            신규 유입에 그치지 않고, 방문한 손님이 만족스러운 영수증 리뷰를 남기고 2회, 3회 다시 찾는 충성 고객으로 전환되도록 돕습니다.
+          </p>
+
+          <ul class="space-y-2.5 text-sm text-slate-700 pt-4 border-t border-slate-100">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>방문 고객의 자발적 리뷰 유도 프로세스 설계</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>한 번 찾은 손님이 단골이 되는 온·오프라인 연결</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-brand-amber shrink-0 mt-0.5"></i>
+              <span>단골 고객 리뷰 자산화를 통한 자연 바이럴 증폭</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Why BizHive? (차별점) -->
+  <section id="why-bizhive" class="py-20 md:py-28 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Title Column -->
+        <div class="lg:col-span-5">
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-amberDark bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full mb-4">
+            <i data-lucide="shield" class="w-3.5 h-3.5 text-brand-amber"></i>
+            <span>차별화된 가치</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy leading-tight tracking-tight mb-6">
+            왜 동네 사장님들은<br>
+            <span class="text-brand-amberDark underline decoration-brand-amber decoration-4 underline-offset-8">비즈하이브</span>를 신뢰할까요?
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-base mb-8">
+            기존 대행사들의 형식적 보고와 천편일률적 패키지 영업에서 벗어나, 
+            실제 매장의 일 매출과 방문객 수를 올리는 것에만 집중합니다.
+          </p>
+
+          <div class="p-6 rounded-2xl bg-brand-navy text-white relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-brand-amber/10 rounded-full blur-2xl"></div>
+            <p class="text-brand-amber font-bold text-sm mb-1">비즈하이브 약속</p>
+            <p class="text-slate-200 text-sm leading-relaxed">
+              "성과가 나타나지 않는 장기 약정은 체결하지 않습니다. 매월 사장님의 눈으로 확인되는 데이터로 평가받겠습니다."
+            </p>
+          </div>
+        </div>
+
+        <!-- Right 3 Differentiators Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Item 1 -->
+          <div class="flex gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-brand-amberDark flex items-center justify-center shrink-0">
+              <i data-lucide="line-chart" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-brand-navy mb-1.5">1. 투명한 데이터 공유</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                노출수·클릭률 같은 복잡한 전문 마케팅 용어 대신 사장님이 가장 직관적으로 체감하시는 <strong class="text-slate-900">'전화 문의 수', '길찾기 클릭 수', '플레이스 저장 수'</strong>를 명확한 주간 지표로 보고합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-brand-amberDark flex items-center justify-center shrink-0">
+              <i data-lucide="message-square" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-brand-navy mb-1.5">2. 현장 중심 커뮤니케이션</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                콜센터 직원이 아닌 사장님의 업종과 매장 상권 특성을 현장 관점에서 깊이 이해하는 <strong class="text-slate-900">1:1 전담 매니저</strong>를 배정하여 빠르고 친절한 실시간 피드백을 제공합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="flex gap-5 p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-brand-amberDark flex items-center justify-center shrink-0">
+              <i data-lucide="wallet" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-brand-navy mb-1.5">3. 무의미한 지출 배제</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                전국 단위로 흩뿌려지는 허공의 광고비는 ZERO! 오직 내 매장으로 실제 올 수 있는 동네 상권에만 고효율로 예산을 집중 집행하여 가성비를 극대화합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Process (진행 4단계) -->
+  <section id="process" class="py-20 md:py-28 bg-brand-grayBg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-amberDark bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full mb-3">
+          <i data-lucide="workflow" class="w-3.5 h-3.5 text-brand-amber"></i>
+          <span>Simple & Clear Workflow</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          복잡함 없는 비즈하이브 4단계 도입 절차
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-600">
+          신청부터 런칭까지 사장님의 귀중한 시간을 빼앗지 않고 알아서 척척 진행됩니다.
+        </p>
+      </div>
+
+      <!-- 4 Step Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all relative flex flex-col">
+          <div class="flex items-center justify-between mb-5">
+            <span class="text-xs font-extrabold px-3 py-1 bg-brand-navy text-white rounded-lg">STEP 01</span>
+            <i data-lucide="search" class="w-5 h-5 text-brand-amberDark"></i>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">무료 매장 진단</h3>
+          <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+            현재 온라인 노출 상태 및 상권 내 경쟁 매장 대비 취약점을 정밀 점검합니다.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-brand-amberDark font-semibold">
+            소요시간: 24시간 이내 결과 발송
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all relative flex flex-col">
+          <div class="flex items-center justify-between mb-5">
+            <span class="text-xs font-extrabold px-3 py-1 bg-brand-navy text-white rounded-lg">STEP 02</span>
+            <i data-lucide="compass" class="w-5 h-5 text-brand-amberDark"></i>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">맞춤 전략 수립</h3>
+          <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+            사장님의 업종, 목표 매출, 예산 규모에 맞춘 최적의 채널 믹스를 1:1 설계합니다.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-brand-amberDark font-semibold">
+            1:1 전담 마케터 심층 컨설팅
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all relative flex flex-col">
+          <div class="flex items-center justify-between mb-5">
+            <span class="text-xs font-extrabold px-3 py-1 bg-brand-amber text-brand-navy rounded-lg">STEP 03</span>
+            <i data-lucide="rocket" class="w-5 h-5 text-brand-amberDark"></i>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">세팅 및 광고 런칭</h3>
+          <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+            스마트플레이스 리뉴얼 및 반경 3~5km 정밀 타깃 SNS 광고를 본격 가동합니다.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-brand-amberDark font-semibold">
+            신속한 매장 데이터 세팅 완료
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all relative flex flex-col">
+          <div class="flex items-center justify-between mb-5">
+            <span class="text-xs font-extrabold px-3 py-1 bg-brand-navy text-white rounded-lg">STEP 04</span>
+            <i data-lucide="trending-up" class="w-5 h-5 text-brand-amberDark"></i>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">성과 분석 및 고도화</h3>
+          <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+            주간 리포트를 제공하고 실제 유입 데이터를 바탕으로 방문 전환을 계속 높입니다.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-brand-amberDark font-semibold">
+            매주 투명 리포트 & 지속 최적화
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ (자주 묻는 질문 - 아코디언 인터랙션) -->
+  <section id="faq" class="py-20 md:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-amberDark bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full mb-3">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5 text-brand-amber"></i>
+          <span>궁금증 해결</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          자주 묻는 질문
+        </h2>
+        <p class="mt-3 text-base text-slate-600">
+          상담 전 사장님들께서 가장 많이 문의해주신 질문들을 모았습니다.
+        </p>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden transition-colors bg-slate-50/50">
+          <button class="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-brand-navy hover:text-brand-amberDark transition-colors" onclick="toggleFaq(this)">
+            <span class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-brand-amber/20 text-brand-amberDark text-xs font-extrabold flex items-center justify-center shrink-0">Q1</span>
+              1인 매장이나 소자본 매장도 광고 진행이 가능한가요?
+            </span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-4 bg-white">
+            <strong>네, 가능합니다.</strong> 비즈하이브는 대형 프랜차이즈가 아닌 골목 상권 소상공인 사장님들에게 특화되어 있습니다. 월 수십만 원대의 소액 예산으로도 매장 반경 핵심 손님에게만 집중 도달하도록 설계하므로 낭비 없이 높은 가성비를 체감하실 수 있습니다.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden transition-colors bg-slate-50/50">
+          <button class="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-brand-navy hover:text-brand-amberDark transition-colors" onclick="toggleFaq(this)">
+            <span class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-brand-amber/20 text-brand-amberDark text-xs font-extrabold flex items-center justify-center shrink-0">Q2</span>
+              최소 계약 기간이나 위약금이 있나요?
+            </span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-4 bg-white">
+            <strong>아닙니다. 성과 없는 장기 약정을 강요하지 않습니다.</strong> 비즈하이브는 월 단위 협업을 기본으로 진행하며, 매월 눈에 보이는 성과와 소통으로 신뢰를 증명합니다. 불합리한 위약금이나 강제 연장 조항이 일체 없습니다.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden transition-colors bg-slate-50/50">
+          <button class="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-brand-navy hover:text-brand-amberDark transition-colors" onclick="toggleFaq(this)">
+            <span class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-brand-amber/20 text-brand-amberDark text-xs font-extrabold flex items-center justify-center shrink-0">Q3</span>
+              마케팅을 시작하면 언제부터 손님이 늘어나나요?
+            </span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-4 bg-white">
+            플레이스 최적화 및 타깃 SNS 광고 집행 후 <strong>통상 1~2주 내</strong> 검색 유입량과 길찾기, 전화 문의 지표에서 뚜렷한 변화가 관측되기 시작합니다. 초기 반응을 바탕으로 소재와 타깃을 매주 고도화하여 실제 체감 매출로 이어지게 만듭니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CTA & Lead Capture Form (상담 신청 섹션) -->
+  <section id="consultation" class="py-20 md:py-28 bg-brand-navy text-white relative overflow-hidden">
+    <!-- Ambient Lights -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-amber/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-amber/20 border border-brand-amber/30 text-brand-amber text-xs sm:text-sm font-bold mb-4">
+          <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+          <span>선착순 일일 5개 매장 한정 무료 정밀 분석</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          우리 매장의 비어있는 자리를<br>채울 준비가 되셨나요?
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          간단한 정보만 남겨주시면, 현재 매장의 온라인 노출 상태 및 상권 경쟁도를 전담 마케터가 무료로 분석해 리포트로 제공해 드립니다.
+        </p>
+      </div>
+
+      <!-- Lead Capture Form Card -->
+      <div class="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+        <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- 매장명 -->
+            <div>
+              <label for="storeName" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                매장명 <span class="text-brand-amber">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="storeName" 
+                name="storeName" 
+                required 
+                placeholder="예: 맛있는 고깃집 강남점" 
+                class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all"
+              />
+            </div>
+
+            <!-- 업종 -->
+            <div>
+              <label for="industry" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                업종 <span class="text-brand-amber">*</span>
+              </label>
+              <select 
+                id="industry" 
+                name="industry" 
+                required
+                class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all"
+              >
+                <option value="" disabled selected class="text-slate-500">업종을 선택해주세요</option>
+                <option value="외식업 (식당, 카페, 주점)">외식업 (식당, 카페, 주점)</option>
+                <option value="뷰티·미용 (헤어, 네일, 에스테틱)">뷰티·미용 (헤어, 네일, 에스테틱)</option>
+                <option value="헬스·피트니스 (PT, 요가, 필라테스)">헬스·피트니스 (PT, 요가, 필라테스)</option>
+                <option value="기타 골목 소상공인">기타 소상공인 매장</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- 대표자 성함 / 직함 -->
+            <div>
+              <label for="ownerName" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                대표자 성함 / 직함 <span class="text-brand-amber">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="ownerName" 
+                name="ownerName" 
+                required 
+                placeholder="예: 홍길동 대표" 
+                class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all"
+              />
+            </div>
+
+            <!-- 연락처 (휴대폰 번호) -->
+            <div>
+              <label for="phoneNumber" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                연락처 (휴대폰 번호) <span class="text-brand-amber">*</span>
+              </label>
+              <input 
+                type="tel" 
+                id="phoneNumber" 
+                name="phoneNumber" 
+                required 
+                placeholder="예: 010-1234-5678" 
+                pattern="[0-9]{3}-?[0-9]{3,4}-?[0-9]{4}"
+                class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- 매장 위치 -->
+          <div>
+            <label for="storeLocation" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+              매장 위치 (시 / 구 / 동)
+            </label>
+            <input 
+              type="text" 
+              id="storeLocation" 
+              name="storeLocation" 
+              placeholder="예: 서울시 강남구 역삼동" 
+              class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all"
+            />
+          </div>
+
+          <!-- 현재 겪고 계신 가장 큰 마케팅 고민 -->
+          <div>
+            <label for="concerns" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+              현재 겪고 계신 가장 큰 마케팅 고민 <span class="text-slate-400 font-normal">(선택)</span>
+            </label>
+            <textarea 
+              id="concerns" 
+              name="concerns" 
+              rows="3" 
+              placeholder="예: 신규 오픈 후 지도 검색 노출이 안 돼요 / 광고비 대비 손님이 안 늘어요" 
+              class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent transition-all resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              id="submitBtn"
+              class="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-brand-amber to-brand-amberDark hover:from-amber-400 hover:to-brand-amber text-brand-navy font-black text-base sm:text-lg py-4 rounded-xl shadow-glow-amber hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <i data-lucide="send" class="w-5 h-5 text-brand-navy"></i>
+              <span>무료 온라인 진단 리포트 신청하기</span>
+            </button>
+          </div>
+
+          <!-- Micro-copy -->
+          <p class="text-center text-xs text-slate-400 flex items-center justify-center gap-1.5 pt-1">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>입력하신 정보는 상담 및 상권 분석 외 목적으로 절대 사용되지 않습니다.</span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer -->
+  <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-slate-800">
+        <!-- Brand Info -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-amber to-brand-amberDark flex items-center justify-center shadow-md">
+            <svg class="w-5 h-5 text-brand-navy fill-current" viewBox="0 0 24 24">
+              <path d="M12 2L21 7.2V16.8L12 22L3 16.8V7.2L12 2Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M12 6.5L17 9.4V15.2L12 18.1L7 15.2V9.4L12 6.5Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-extrabold text-white">BizHive</span>
+            <span class="text-xs text-brand-amber block">비즈하이브 온라인 마케팅</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-wrap gap-6 text-sm">
+          <a href="#services" class="hover:text-brand-amber transition-colors">서비스 안내</a>
+          <a href="#why-bizhive" class="hover:text-brand-amber transition-colors">차별점</a>
+          <a href="#process" class="hover:text-brand-amber transition-colors">진행 절차</a>
+          <a href="#faq" class="hover:text-brand-amber transition-colors">자주 묻는 질문</a>
+          <a href="#consultation" class="hover:text-brand-amber transition-colors text-brand-amber font-semibold">무료 진단 신청</a>
+        </div>
+      </div>
+
+      <!-- Business Details (Placeholder compliant) -->
+      <div class="pt-8 text-xs text-slate-500 space-y-2 leading-relaxed">
+        <p>
+          상호명: 비즈하이브 (BizHive) | 대표자: 홍길동 | 사업자등록번호: 123-45-67890 | 통신판매업신고: 제 2026-서울강남-0000호
+        </p>
+        <p>
+          사업장 소재지: 서울특별시 강남구 테헤란로 123 비즈하이브 타워 4층 | 대표전화: 1588-0000 (평일 10:00 - 18:00) | 이메일: contact@bizhive.kr
+        </p>
+        <p class="pt-4 text-slate-600">
+          Copyright &copy; 2026 BizHive. All rights reserved. 본 사이트의 모든 컨텐츠는 저작권법의 보호를 받습니다.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Submission Success Modal -->
+  <div id="successModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl transform transition-all">
+      <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-6">
+        <i data-lucide="check-circle" class="w-9 h-9"></i>
+      </div>
+      <h3 class="text-2xl font-black text-brand-navy mb-2">무료 진단 신청 완료!</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-6">
+        사장님의 매장 분석 신청이 성공적으로 접수되었습니다.<br>
+        담당 1:1 마케터가 상권 및 플레이스 분석 후 <strong class="text-brand-navy">24시간 이내</strong>에 남겨주신 연락처로 맞춤 진단 보고서를 안내해 드리겠습니다.
+      </p>
+      <button onclick="closeModal()" class="w-full bg-brand-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-colors">
+        확인
+      </button>
     </div>
   </div>
+
+  <!-- Floating Sticky Consultation Bar for Mobile/Desktop -->
+  <div id="floatingBar" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 z-40 max-w-md transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+    <div class="bg-brand-navy/95 backdrop-blur-md border border-slate-700 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-brand-amber animate-ping"></div>
+        <span class="text-xs sm:text-sm font-semibold text-slate-200">매장 상권 무료 진단 접수 중</span>
+      </div>
+      <a href="#consultation" class="bg-brand-amber hover:bg-amber-400 text-brand-navy text-xs sm:text-sm font-extrabold px-4 py-2 rounded-xl shrink-0 transition-all">
+        지금 신청하기
+      </a>
+    </div>
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMobileMenu() {
+      if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+      }
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // FAQ Accordion Interaction
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('[data-lucide="chevron-down"]');
+      const isHidden = content.classList.contains('hidden');
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('#faq button [data-lucide="chevron-down"]').forEach(ic => {
+        ic.style.transform = 'rotate(0deg)';
+      });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Lead Form Submit Handler & Conversion Tracking
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      
+      const form = document.getElementById('leadForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const storeName = document.getElementById('storeName').value;
+      const industry = document.getElementById('industry').value;
+      const ownerName = document.getElementById('ownerName').value;
+      const phoneNumber = document.getElementById('phoneNumber').value;
+
+      // Disable button briefly
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>접수 진행 중...</span>';
+      }
+
+      // Tracking hooks (Meta Pixel, GA4 compliant with AGENTS.md rule)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'BizHive_Free_Consultation',
+          store: storeName,
+          status: 'submitted'
+        });
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'consultation',
+          event_label: storeName
+        });
+      }
+
+      setTimeout(() => {
+        // Show success modal
+        const modal = document.getElementById('successModal');
+        if (modal) {
+          modal.classList.remove('hidden');
+        }
+        form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `
+            <i data-lucide="send" class="w-5 h-5 text-brand-navy"></i>
+            <span>무료 온라인 진단 리포트 신청하기</span>
+          `;
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }, 600);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('successModal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Floating Sticky Bar on scroll
+    window.addEventListener('scroll', () => {
+      const floatingBar = document.getElementById('floatingBar');
+      if (!floatingBar) return;
+
+      const consultationSec = document.getElementById('consultation');
+      const consultationTop = consultationSec ? consultationSec.offsetTop : 99999;
+      
+      if (window.scrollY > 400 && window.scrollY < consultationTop - 400) {
+        floatingBar.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        floatingBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      } else {
+        floatingBar.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      }
+    });
+  </script>
 </body>
 </html>
